@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore - ChitralRoam</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: sans-serif;
+            color: #222;
+            background-color: #fae9da;
+            user-select: none;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar{
+            background-color: rgba(0, 0, 0, 0);
+        }
+        ::-webkit-scrollbar-track{
+            background-color: rgba(0, 0, 0, 0);
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: #c6c6c6;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover{
+            background-color: #a9a9a9;
+        }
+        ::selection{
+            background-color: #ffc8c2;
+        }
+        ion-icon{
+            position: fixed;
+            bottom: 1.2rem;
+            right: 1.2rem;
+            padding: 10px;
+            font-size: 2rem;
+            background-color: transparent;
+            border-radius: 20px;
+            color: #000;
+            border: 1px solid #000;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.3s;
+        }
+        ion-icon:hover{
+            background-color: #ffc8c2;
+        }
+        .navbar{
+            display: flex;
+            height: 3.3rem;
+            width: 70%;
+            margin: auto;
+            margin-bottom: 2rem;
+            background-color: #ffc8c2;
+            border-bottom-left-radius: 150px;
+            border-bottom-right-radius: 150px;
+            border-bottom: 1px solid #222;
+            border-left: 1px solid #222;
+            border-right: 1px solid #222;
+            opacity: 0;
+            animation: slide-down 0.5s ease-in-out 1 forwards;
+            animation-delay: 0.5s;
+        }
+        ul{
+            display: flex;
+            width: 50%;
+            height: 100%;
+            margin: auto;
+            list-style-type: none;
+        }
+        li{
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        li a{
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+            color: #222;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all ease 0.35s;
+        }
+        li a:hover{
+            background-color: #c3e0dd;
+        }
+        .explore{
+            display: block;
+            width: 97%;
+            margin: 0rem auto;
+            padding: 6rem 0rem;
+            background-color: rgba(0, 0, 0, 0.0);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            transition: 0.5s;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 1.4s;
+        }
+        h1{
+            display: inline-block;
+            font-size: clamp(60px, 8vw, 100px);
+            height: 105px;
+            width: 90%;
+            margin: 5px 60px;
+            font-family: serif;
+            font-variant: small-caps;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 0.8s;
+            user-select: text;
+        }
+        #abt{
+            margin: 1rem 4rem 1rem 4rem;
+            width: 65%;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 1.1s;
+            user-select: text;
+        }
+        #content{
+            position: relative;
+            width: 75%;
+            margin: 6rem auto;
+        }
+        img{
+            height: 130px;
+            width: 220px;
+            float: right;
+            margin: 20px;
+            border: 1px solid #222;
+            border-radius: 10px;
+            box-shadow: 3px 3px 2px #222;
+            object-fit: cover;
+        }
+        fieldset{
+            display: block;
+            width: 85%;
+            margin: 30px auto;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.10);
+            border-radius: 20px;
+            filter: grayscale(100%);
+            border: 1px solid #222;
+            transition: 0.55s ease-in-out;
+        }
+        fieldset:hover{
+            background-color: rgba(0, 0, 0, 0.15);
+            scale: 1.04;
+            filter: grayscale(0%);
+            color: rgba(2, 2, 2, 1);
+        }
+        legend{
+            padding: 0px 10px;
+            filter: drop-shadow(0px 0px 1.5px black)
+        }
+        .heading{
+            width: 100%;
+            height: 100%;
+            margin: 50px 0px;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 1.7s;
+        }
+        .heading p{
+            text-align: center;
+            margin: 10px 0px;
+            padding: 0px 60px;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.0s;
+        }
+        h3{
+            font-size: 30px;
+            text-align: center;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 1.7s;
+        }
+        .heading-more{
+            width: 100%;
+            height: 100%;
+            margin: 1rem 0px 1rem 0px;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 3.5s;
+        }
+        .heading-more p{
+            text-align: center;
+            margin: 10px 0px;
+            padding: 0px 60px;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 3.8s;
+        }
+        #opt{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.0s;
+        }
+        .option{
+            width: 100%;
+            min-height: 480px;
+            margin: 0.3rem;
+            padding: 20px 15px;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.3s;
+        }
+        .option h2{
+            margin: 5px;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.9s;
+        }
+        .option p{
+            margin: 5px;
+            width: 90%;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 3.2s;
+        }
+        .option img{
+            height: 180px;
+            width: 100%;
+            box-shadow: none;
+            float: none;
+            margin: auto;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.6s;
+        }
+        .option img:hover{
+            background-color: rgba(0, 0, 0, 0.1);
+            box-shadow: none;
+            filter: grayscale(0%);
+            scale: 1;
+            opacity: 1;
+        }
+        .container{
+            color: rgba(2, 2, 2, 1);
+            text-align: center;
+        }
+        .card{
+            display: inline-block;
+            width: 190px;
+            height: 270px;
+            margin: 2px;
+            border: 2px solid #222;
+            box-shadow: 0px 3px 30px #222;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #f2f2f2;
+            transition: 0.5s ease-in-out;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 4.1s;
+        }
+        .card:hover{
+            scale: 1.02;
+            box-shadow: 0px 10px 60px #222;
+        }
+        .card img{
+            float: none;
+            width: inherit;
+            height: 89%;
+            margin: 0px;
+            border: 0px;
+            border-radius: inherit;
+            box-shadow: 0px 0px 0px #222;
+            filter: grayscale(70%);
+            opacity: 1;
+            transition: 0.5s ease-in-out;
+        }
+        .card img:hover{
+            scale: 1;
+            filter: grayscale(0%);
+        }
+        h4{
+            width: 100%;
+            text-align: center;
+            font-size: 13px;
+        }
+        @keyframes slide-up {
+            from{
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes slide-down {
+            from{
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        @media (max-width: 750px){
+            body{
+                user-select: none;
+                overflow-x: hidden;
+                margin: auto;
+            }
+            .navbar{
+                height: 2.6rem;
+                overflow: hidden;
+                border-bottom: 2px solid #222;
+                border-left: 2px solid #222;
+                border-right: 2px solid #222;
+            }
+            ul{
+                width: 90%
+            }
+            li a{
+                font-size: 0.75rem;
+            }
+            #opt{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .option{
+                min-height: 9rem;
+            }
+            .card{
+                height: 7rem;
+                width: 8rem;
+            }
+            .card h4{
+                font-size: 0.4rem;
+            }
+            ion-icon{
+                font-size: 2rem;
+                border-radius: 0.45rem;
+                bottom: 0.5rem;
+                right: 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false" id="top">
+   <div class="navbar">
+       <ul>
+           <li><a href="index.html">Home</a></li>
+           <li><a href="history.html">History</a></li>
+           <li><a href="explore.html">Explore</a></li>
+       </ul>
+   </div>
+   
+   <div id="header">
+   <h1>Explore Chitral</h1><br>
+        <p id="abt">Chitral, located in the Khyber Pakhtunkhwa province of Pakistan, is a picturesque region known for its stunning landscapes, rich culture, and historical significance. Here are some tourist attractions in Chitral:</p><br>
+    </div>
+    
+    
+
+<div id="content">
+    <div class="explore">
+        <div class="heading">
+        <h3>Embark to Chitral: Access Routes</h3>
+        <p>To reach Chitral, there are several transportation options, and the best one for you depends on your starting point and preferences.  Here are common ways to reach Chitral:</p>
+        </div>
+        
+<div id="opt">
+        <fieldset class="option"><legend>Option 1</legend><img src="Explore/Option%201.PNG">
+            <h2>By Air:</h2>
+            <p>Chitral Airport is the primary airport, and flights are available from major cities like Islamabad. It's important to note that the airport typically operates twice a week, specifically on Fridays and Sundays. However, flight schedules can be weather-dependent, so it's essential to check and confirm in advance.</p>
+        </fieldset>
+
+        <fieldset class="option"><legend>Option 2</legend><img src="Explore/Option%202.PNG">
+            <h2>By Road:</h2>
+            <p>The overland journey to Chitral by road involves driving through picturesque mountainous terrain. The route typically starts from Islamabad or Peshawar. Additionally, it's possible to reach Chitral from Gilgit, providing an alternative scenic route. The journey offers stunning views of the landscapes, but travelers should be prepared for a longer travel time due to the winding roads.</p>
+        </fieldset>
+
+        <fieldset class="option"><legend>Option 3</legend><img src="Explore/Option%203">
+            <h2>By Bus or Shared Taxi:</h2>
+            <p>Public buses, private coaches, and shared taxis provide overland transportation to Chitral. Buses are a more budget-friendly option, while shared taxis offer a quicker and potentially more comfortable journey. It's advisable to inquire about schedules and availability beforehand. Road conditions and travel times can vary, so flexibility is key.</p>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="explore">
+       <div class="heading-more">
+        <h3>Attraction Points</h3>
+        <p><i>Explore Through Clicks:</i></p>
+        </div>
+        
+        <div class="container">           
+            <div class="card">
+            <a target="_blank" href="wp-Chitral.html"><img src="Explore/aa-chitral-valley.jpg"></a>
+            <h4>Chitral Valley</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-shandur.html"><img src="Explore/aa-%20shandur.jpg"></a>
+            <h4>Shandur Pass</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-kalash.html"><img src="Explore/aa-%20kalash%20valley.jpg"></a>
+            <h4>Kalash Valley</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-ch-gol.html"><img src="Explore/aa-%20chitral%20gol.jpg"></a>
+            <h4>Chitral Gol National Park</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-TerichMir.html"><img src="Explore/aa-%20tirchmir.jpg"></a>
+            <h4>Terich Mir</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-Chitral-Fort.html"><img src="Explore/aa-%20fort.webp"></a>
+            <h4>Chitral Fort (Shahi Qila)</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-Garam%20Chashma.html"><img src="Explore/aa-%20garam%20chashma.jpg"></a>
+            <h4>Garam Chashma</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-tr.html"><img src="Explore/aa-%20ayun-fort.jpg"></a>
+            <h4>Ayun and Bumburet Forts</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-shahi-mosque.html"><img src="Explore/aa-%20Shahi_mosque.jpg"></a>
+            <h4>Shahi Mosque</h4>
+            </div>
+            
+            <div class="card">
+            <a target="_blank" href="wp-madaklasht.html"><img src="Explore/aa-%20Madaklasht.jpg"></a>
+            <h4>Madaklasht</h4>
+            </div>
+        </div>
+    </div>
+</div>
+    <a href="#top">
+        <ion-icon name="arrow-up"></ion-icon>
+    </a>
+</body>
+</html>

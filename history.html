@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History - ChitralRoam</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: sans-serif;
+            color: #222;
+            background-color: #ffc8c2;
+            user-select: none;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar{
+            background-color: rgba(0, 0, 0, 0);
+        }
+        ::-webkit-scrollbar-track{
+            background-color: rgba(0, 0, 0, 0);
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: #c6c6c6;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover{
+            background-color: #a9a9a9;
+        }
+        ::selection{
+            background-color: #fae9da;
+        }
+        ion-icon{
+            position: fixed;
+            bottom: 1.2rem;
+            right: 1.2rem;
+            padding: 10px;
+            font-size: 2rem;
+            background-color: transparent;
+            border-radius: 20px;
+            color: #000;
+            border: 1px solid #000;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.3s;
+        }
+        ion-icon:hover{
+            background-color: #fae9da;
+        }
+        .navbar{
+            display: flex;
+            height: 3.3rem;
+            width: 70%;
+            margin: auto;
+            margin-bottom: 2rem;
+            background-color: #fae9da;
+            border-bottom-left-radius: 150px;
+            border-bottom-right-radius: 150px;
+            border-bottom: 1px solid #222;
+            border-left: 1px solid #222;
+            border-right: 1px solid #222;
+            opacity: 0;
+            animation: slide-down 0.5s ease-in-out 1 forwards;
+            animation-delay: 0.5s;
+        }
+        ul{
+            display: flex;
+            width: 50%;
+            height: 100%;
+            margin: auto;
+            list-style-type: none;
+        }
+        li{
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        li a{
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+            color: #222;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all ease 0.35s;
+        }
+        li a:hover{
+            background-color: #c3e0dd;
+        }
+        .history{
+            display: block;
+            width: 75%;
+            margin: 5rem auto;
+            padding: 3rem 0rem;
+            background-color: rgba(0, 0, 0, 0.0);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            transition: 0.5s;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 1.4s;
+        }
+        h1{
+            display: inline-block;
+            font-size: clamp(60px, 8vw, 100px);
+            height: 105px;
+            width: 90%;
+            margin: 5px 60px;
+            font-family: serif;
+            font-variant: small-caps;
+            user-select: text;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 0.8s;
+        }
+        #abt{
+            margin: 1rem 4rem 1rem 4rem;
+            width: 65%;
+            user-select: text;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 1.1s;
+        }
+        #content{
+            position: relative;
+            width: 90%;
+            margin: 6rem auto;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 1.7s;
+        }
+        img{
+            height: 170px;
+            width: 220px;
+            float: right;
+            margin: 20px;
+            border: 1px solid #222;
+            border-radius: 10px;
+            box-shadow: 3px 3px 2px #222;
+            object-fit: cover;
+            transition: 0.5s;
+            opacity: 0;
+            animation: slide-up 0.5s ease-in-out 1 forwards;
+            animation-delay: 2.0s;
+        }
+        fieldset{
+            display: block;
+            width: 85%;
+            margin: 30px auto;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.10);
+            filter: grayscale(100%);
+            border-radius: 20px;
+            border: 1px solid #222;
+            transition: 0.55s ease-in-out;
+        }
+        fieldset:hover{
+            background-color: rgba(0, 0, 0, 0.15);
+            scale: 1.04;
+            filter: grayscale(0%);
+        }
+        legend{
+            padding: 0px 10px;
+            filter: drop-shadow(2px 2px 5px black)
+        }
+        @keyframes slide-up {
+            from{
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes slide-down {
+            from{
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        @media (max-width: 750px){
+            .navbar{
+                height: 2.6rem;
+                overflow: hidden;
+                border-bottom: 2px solid #222;
+                border-left: 2px solid #222;
+                border-right: 2px solid #222;
+            }
+            ul{
+                width: 90%
+            }
+            li a{
+                font-size: 0.75rem;
+            }
+            #opt{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .option{
+                min-height: 9rem;
+            }
+            ion-icon{
+                font-size: 2rem;
+                border-radius: 0.45rem;
+                bottom: 0.5rem;
+                right: 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false" id="top">
+   <div class="navbar">
+       <ul>
+           <li><a href="index.html">Home</a></li>
+           <li><a href="history.html">History</a></li>
+           <li><a href="explore.html">Explore</a></li>
+       </ul>
+   </div>
+   <h1 id="top">History Of Chitral</h1><br>
+        <p id="abt">Nothing definitive is recorded about the town’s first settlers. In the 3rd century AD, Kanishka, the Buddhist ruler of the Kushan empire, occupied Chitral. In the 4th century AD, the Chinese overran the valley. Raees rule over Chitral began in 1320 and came to an end in the 15th century. From 1571 onwards Chitral was the capital of the princely state of Chitral under the rule of the Katur Dynasty.</p><br>
+    <div class="history">
+        <div id="content">
+        
+        <fieldset><legend>#1</legend>
+            <h2>Ancient Era:</h2><img src="History/Singoor.png">
+            <p>The existence of the Gandharan Grave Culture in Chitral, found in various grave sites scattered over its valleys gives an insightful knowledge of its inhabitants following the Indo-Aryan migrations, after the decline of Indus Valley civilization. The Gankorineotek cemetery in Singoor is home to several ancient burial sites, dating back to the Vedic period.</p><br>
+            <p>The area which now forms Chitral was reportedly conquered by the Persian Achaemenids and was a part of one of their easternmost satraps. In the third century CE, Kanishka, the Buddhist ruler of the Kushan empire, occupied Chitral. Under the Kushans, many Buddhist monuments were built around the area, mainly Buddhist stupas and monasteries. The Kushans also patronised Buddhist art; some of the finest examples of the image of Buddha were produced in the region under the Kushan rule.</p><br>
+        </fieldset>
+        
+        <fieldset><legend>#2</legend>
+            <h2>Buddhist Period:</h2><img src="History/buddhist.jpg">
+            <p>Chitral was part of the Buddhist civilization that flourished in the region. Evidence of   ancient Buddhist stupas and rock carvings has been found in the area, indicating the presence of these ancient religions.</p><br>
+            <p>The spread of Islam reached Chitral in the 11th century. The region became an important center for Islamic culture and trade. It came under the influence of various Muslim dynasties, including the Ghaznavids, Ghurids, and Timurids.</p><br>
+        </fieldset>
+        
+        <fieldset><legend>#3</legend>
+            <h2>Chitral State:</h2><img src="History/Flag_of_State_of_Chitral.svg.png">
+            <p>Chitral became a princely state in the 15th century, and various rulers governed the region. The rulers of Chitral maintained a degree of autonomy while acknowledging the suzerainty of larger empires. The region had periods of stability and conflict, with rivalries between local rulers and external powers.</p><br>
+            <p>In the late 19th century, during the British colonial era, Chitral came into contact with the British Empire. The region became strategically important in the context of the Great Game, a geopolitical rivalry between the British and Russian Empires. Chitral briefly became a princely state under British influence.</p>
+        </fieldset>
+        
+        <fieldset><legend>#4</legend>
+            <h2>Katoor era:</h2><img src="History/kator.jpg">
+            <p>The Katoor dynasty (also spelled Katur and Kator) was a dynasty, which along with its collateral branches ruled the sovereign, later princely state of Chitral and its neighbours in the eastern Hindu Kush region for over 450 years, from around 1570 until 1947. At the height its power under Mehtar Aman ul-Mulk the territory controlled by the dynasty extended from Asmar in the Kunar Valley to Sher Qilla in the Gilgit valley. The Mehtar of Chitral was an influential player in the power politics of the region as he acted as an intermediary between the rulers of Badakhshan, the Yousafzai pashtuns, the Maharaja of Kashmir and later the Amir of Afghanistan.</p><br>
+            <p>From 1571 to 1969, Chitral was the dominion of the Kator Dynasty. The British and Sikh garrison suffered a siege by the Chitralis, possibly aided by Afghan forces, in 1895. The garrison was relieved after six weeks, and the British installed the young Shuja ul-Mulk as Mehtar ("ruler"). He ruled for the next 41 years.</p>
+        </fieldset>
+        
+        <fieldset><legend>#5</legend>
+            <h2>Accession To Pakistan:</h2><img src="History/accession.jpg">
+            <p>In 1947, following the division of the British colony of India, princely states were offered the choice to either remain independent or to choose one of the two new dominions. Initially, Chitral chose to remain independent Monarchy. Later, the Mehtar of Chitral, who was a friend of Quaid E Azam Mohammad Ali Jinnah, acceded to Pakistan and thus Chitral became one of the princely states of Pakistan.</p><br>
+            <p>Through 1969 to 1972, it was fully integrated into Pakistan as the administrative district of Chitral.</p>
+        </fieldset>
+        
+        <fieldset><legend>#6</legend>
+            <h2>Role In First Kashmir War:</h2><img src="History/warJK.jpg">
+            <p>Chitral played an instrumental role in the 1947–1948 first Kashmir war. Immediately after acceding to Pakistan, Mehtar Muzaffar ul-Mulk proclaimed Jihad to "liberate" Kashmir from the Dogras. At this point, the Gilgit scouts were retreating and the Dogra forces had made gains in the Burzil pass. Under these circumstances, the Chitral scouts relieved the Gilgit scouts in Domel and Kamri sectors whilst the Chitral Bodyguard force went towards Skardu. The Chitral bodyguards under the leadership of a Chitral Prince laid one of the longest sieges in military history which ended with the fall of Skardu, the surrender of the Dogras, and the capture of Baltistan. During this time, the Chitral scouts assimilated with the Gilgit scouts and went on towards taking the Kargil pass.</p>
+        </fieldset>
+        
+        </div>
+    </div>
+    <a href="#top">
+        <ion-icon name="arrow-up"></ion-icon>
+    </a>
+</body>
+</html>
